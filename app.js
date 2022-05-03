@@ -108,11 +108,13 @@ piii.test();
     acceptNewTask = () => {
         this.busy = true;
     }
-    offerNewTask = () => {
-        if (this.busy) {
+    offerNewTask = (tasks) => {
+        if (tasks) {
+            this.acceptNewTask();
             console.log('We are too busy to accept any quest');
         } else {
-           console.log('Bring it on!');
+            this.completeTask();
+            console.log('Bring it on!');
         }
     }
     learnLanguage = (language) => {
@@ -124,6 +126,8 @@ piii.test();
  }
  let ale = new Programmer('Alejandro', 'Full-stack Dev', 20 ,'Javascript');
  ale.fetchJob()
+ ale.offerNewTask(true);
+ ale.offerNewTask(false);
  ale.learnLanguage("C++");
  ale.learnLanguage("Java");
  ale.listLanguages();
